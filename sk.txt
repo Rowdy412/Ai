@@ -1,0 +1,255 @@
+Microsoft Windows [Version 10.0.19045.4651]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Aids>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 9.0.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| ali                |
+| ash                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| st                 |
+| sys                |
++--------------------+
+7 rows in set (0.05 sec)
+
+mysql> drop ali;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ali' at line 1
+mysql> use ali;
+Database changed
+mysql> drop ali;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ali' at line 1
+mysql> drop database ali;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| ash                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| st                 |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database sarthak;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| ash                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sarthak            |
+| st                 |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use sarthak;
+Database changed
+mysql> create table cringe_movements(p);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table store;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table store (productID int,product name varchar(200),Amount int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name varchar(200),Amount int)' at line 1
+mysql> create table store (productID int,product_name varchar(200),Amount int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc store;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| productID    | int          | YES  |     | NULL    |       |
+| product_name | varchar(200) | YES  |     | NULL    |       |
+| Amount       | int          | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table store
+    -> add rating int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc store;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| productID    | int          | YES  |     | NULL    |       |
+| product_name | varchar(200) | YES  |     | NULL    |       |
+| Amount       | int          | YES  |     | NULL    |       |
+| rating       | int          | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table store
+    -> modify rating varchar(200);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc store;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| productID    | int          | YES  |     | NULL    |       |
+| product_name | varchar(200) | YES  |     | NULL    |       |
+| Amount       | int          | YES  |     | NULL    |       |
+| rating       | varchar(200) | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table store
+    -> modify rating imt;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'imt' at line 2
+mysql> alter table store
+    -> modify rating int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table store
+    -> drop rating;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc store;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| productID    | int          | YES  |     | NULL    |       |
+| product_name | varchar(200) | YES  |     | NULL    |       |
+| Amount       | int          | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from store;
+Empty set (0.00 sec)
+
+mysql> use store;
+ERROR 1049 (42000): Unknown database 'store'
+mysql> drop table store;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc store
+    ->
+    -> use store;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'use store' at line 3
+mysql> desc store;
+ERROR 1146 (42S02): Table 'sarthak.store' doesn't exist
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ash                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sarthak            |
+| st                 |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use store;
+ERROR 1049 (42000): Unknown database 'store'
+mysql> create table store;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create database store;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use store
+Database changed
+mysql> create table inventory()
+    ->
+    -> j;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+
+j' at line 1
+mysql> create table inventory(
+    -> product_id int,
+    -> product_name varchar(200),
+    -> product_price varchar(200),
+    -> product_margin varchar(200),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 6
+mysql> create table inventory(
+    -> product_id int,
+    -> product_name varchar(200),
+    -> product_margin varchar(200),
+    -> product_price varchar(200)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> use store;
+Database changed
+mysql> desc inventory
+    -> ;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| product_id     | int          | YES  |     | NULL    |       |
+| product_name   | varchar(200) | YES  |     | NULL    |       |
+| product_margin | varchar(200) | YES  |     | NULL    |       |
+| product_price  | varchar(200) | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into inventory values(1,'ice creame','8','35');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select
+    -> * from inventory;
++------------+--------------+----------------+---------------+
+| product_id | product_name | product_margin | product_price |
++------------+--------------+----------------+---------------+
+|          1 | ice creame   | 8              | 35            |
++------------+--------------+----------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into inventory values(2,'pen','4','35');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into inventory values(3,'pencil','4','10')(4,'shampoo','4','10');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(4,'shampoo','4','10')' at line 1
+mysql> insert into inventory values(3,'pencil','4','10'),(4,'shampoo','4','10');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select
+    -> * from inventory;
++------------+--------------+----------------+---------------+
+| product_id | product_name | product_margin | product_price |
++------------+--------------+----------------+---------------+
+|          1 | ice creame   | 8              | 35            |
+|          2 | pen          | 4              | 35            |
+|          3 | pencil       | 4              | 10            |
+|          4 | shampoo      | 4              | 10            |
++------------+--------------+----------------+---------------+
+4 rows in set (0.00 sec)
+
+mysql>
